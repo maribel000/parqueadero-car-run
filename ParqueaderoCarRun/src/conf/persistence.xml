@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="ParqueaderoCarRunPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>entity.Regautomotorsalida</class>
+    <class>entity.Viewcontrato</class>
+    <class>entity.Viewautomotor</class>
+    <class>entity.Usuariosistema</class>
+    <class>entity.Viewregtrabajador</class>
+    <class>entity.Estadofinanciero</class>
+    <class>entity.Comite</class>
+    <class>entity.Pertenecea</class>
+    <class>entity.Insumos</class>
+    <class>entity.Tipoautomotor</class>
+    <class>entity.Viewlogin</class>
+    <class>entity.Viewregautoentrada</class>
+    <class>entity.Proyecto</class>
+    <class>entity.Automotor</class>
+    <class>entity.Contrato</class>
+    <class>entity.Viewroladmin</class>
+    <class>entity.Viewregautosalida</class>
+    <class>entity.Regtrabajador</class>
+    <class>entity.Viewcliente</class>
+    <class>entity.Rolparqueo</class>
+    <class>entity.Viewusuariosisstema</class>
+    <class>entity.ViewtipoAutomotor</class>
+    <class>entity.Viewcomite</class>
+    <class>entity.Roladmin</class>
+    <class>entity.Regautomotorentrada</class>
+    <class>entity.Cliente</class>
+    <class>entity.ViewrolParqueo</class>
+    <class>entity.Danhos</class>
+    <class>entity.Login</class>
+    <class>entity.Viewdnhos</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://168.176.36.26:1433"/>
+      <property name="javax.persistence.jdbc.password" value="s02257370"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.user" value="rvillabonas"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>
