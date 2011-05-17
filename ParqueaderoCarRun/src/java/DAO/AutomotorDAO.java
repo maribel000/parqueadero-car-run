@@ -12,22 +12,32 @@ public class AutomotorDAO extends GeneralDAO<Automotor, String> {
 
     @Override
     public String getReadQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
+         return "SELECT a FROM Automotor a";
     }
-
+    //Leemos por placa de automotor   
     @Override
     public String getReadByNameQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return "SELECT a FROM automotor a WHERE UPPER(a.placa) LIKE :name ORDER BY a.placa asc";
     }
 
     @Override
     public String[] makeArray(List lis, int tam) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
+       String[] lista = new String[tam];
+        int      i;
+
+        for (i = 0; i < tam; i++) {
+            lista[i] = ((Automotor) lis.get(i)).getPlaca();
+        }
+
+        return lista; 
+               
+        
     }
 
     @Override
     public Class getEntityClass() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return Automotor.class;
     }
     
 }
