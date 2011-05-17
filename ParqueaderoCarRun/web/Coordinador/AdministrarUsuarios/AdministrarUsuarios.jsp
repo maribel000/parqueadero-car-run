@@ -13,14 +13,14 @@ http-equiv="content-type">
 <title>AdministrarUsuariosCoordinador</title>
 <style type="text/css"></style>
 <style title="style" media="style" type="text/css"></style>
-<link rel="stylesheet" href="../style.css" type="text/css">
+<link rel="stylesheet" href="../../style.css" type="text/css">
 </head>
 <body>
 <small>&nbsp; </small><big style="font-weight: bold;"><big><big><big><big>Bienvenidos
 a CarRun</big></big></big></big></big>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <big><big style="font-weight: bold;">&nbsp;<big
 style="text-decoration: underline;"><span
-style="text-decoration: underline;"></span><a href="../index.html">Cerrar
+style="text-decoration: underline;"></span><a href="../../index.jsp">Cerrar
 Sesión</a></big></big></big><br>
 <br>
 <div style="margin-left: 40px;">&nbsp;
@@ -33,7 +33,7 @@ cellpadding="2" cellspacing="2">
 <tr>
 <td style="vertical-align: top;"><img
 style="width: 259px; height: 195px;" alt="" title="ImagenSesion"
-src="../images/park.jpg"><br>
+src="../../images/park.jpg"><br>
 <big style="font-weight: bold;"><big><br>
 <br>
 <br>
@@ -55,8 +55,8 @@ Usuarios</big></big></legend><br>
 style="text-decoration: underline;"><strong></strong></span><br>
 <span style="font-weight: bold;">Buscar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp;<input name="editarUsuario"
-value="Editar Usuario " type="submit">
+&nbsp; &nbsp; &nbsp;&nbsp;<a href="editarUsuarios.jsp"><input name="editarUsuario"
+                                                              value="Editar Usuario " type="submit"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -64,18 +64,16 @@ value="Editar Usuario " type="submit">
 </span><input name="BuscarUsuarios">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input value="Buscar" name="BuscarUsuario" type="submit">&nbsp;&nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<input name="eliminarUsuario"
-value="Eliminar Usuario" type="submit">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp;<a href="EliminarUsuarios.jsp"><input name="eliminarUsuario"
+value="Eliminar Usuario" type="submit"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp; &nbsp; <input name="crearUsuarios"
-value="Crear Usuarios " type="submit">&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; <a href="CrearUsuarios.jsp"><input name="crearUsuarios" value="Crear Usuarios     " type="submit"></a>&nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; <span style="font-weight: bold;">_<strong>_____________________________________________________________________________</strong></span><strong>&nbsp;&nbsp;
 <br>
@@ -102,12 +100,7 @@ value="Crear Usuarios " type="submit">&nbsp; &nbsp; &nbsp; &nbsp;
 <br>
 <br>
 </td>
-<td style="vertical-align: top;"><br>
-</td>
-<td style="vertical-align: top;"><br>
-</td>
-<td style="vertical-align: top;"><br>
-</td>
+
 <td style="vertical-align: top;"><br>
 </td>
 </tr>
