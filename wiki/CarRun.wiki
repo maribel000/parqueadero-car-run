@@ -1,13 +1,8 @@
-Este proyecto contruye un sistema de información apra un arqueader en la ciudad de Bogotá.
+Este proyecto contruye un sistema de información para un parqueadero en la ciudad de Bogotá.
 
-= Introduction =
-
-Add your content here.
+= Introducción =
 
 
-= Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+= Detalles=
