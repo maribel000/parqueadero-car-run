@@ -1,7 +1,7 @@
 <%-- 
-    Document   : ValidarSesionUsuario
-    Created on : 13/05/2011, 11:28:00 PM
-    Author     : juan
+    Document   : CrearReporte
+    Created on : May 18, 2011, 4:59:40 AM
+    Author     : eagle
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
