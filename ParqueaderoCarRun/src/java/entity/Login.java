@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.io.Serializable;
@@ -19,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author eagle
  */
 @Entity
-@Table(name = "LOGIN", catalog = "dbd_2", schema = "rvillabonas")
+@Table(name = "<LOGIN", catalog = "dbd_2", schema = "rvillabonas")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Login.findAll", query = "SELECT l FROM Login l"),
