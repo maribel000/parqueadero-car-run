@@ -1,42 +1,51 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Viewautomotor;
 
+import entity.VIEWAUTOMOTOR;
+import java.util.ArrayList;
+import java.sql.ResultSet;
 /**
  *
  * @author eagle
  */
-public class viewAutomotorMgr extends GeneralDAO<viewAutomotorMgr, String> {
+public class viewAutomotorMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-         return "SELECT v FROM ViewAutomotor v";
-    }
+    public static final viewAutomotorMgr mgr = new viewAutomotorMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        
-      return "SELECT a FROM ViewAutomotor a WHERE UPPER(a.placa) LIKE :name ORDER BY a.placa asc";  
-        
-    }
+	public viewAutomotorMgr() {
+		super( "VIEWAUTOMOTOR" );
+		m_titles = new String[]{"placa", "cedulaCliente", "idTipoAutomotor", "observacionAutomotor"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWAUTOMOTOR getBean() {
+		return new VIEWAUTOMOTOR();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewautomotor) lis.get(i)).getPlaca();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWAUTOMOTOR( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWAUTOMOTOR getItem( String id ) {
+		return (VIEWAUTOMOTOR)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String placa){
+            execute("delete from VIEWAUTOMOTOR where placa = '"+placa+"'");
         }
 
-        return lista; 
-    }
+        public synchronized VIEWAUTOMOTOR getItemForPlaca(String placa){
+            ArrayList<VIEWAUTOMOTOR> lst = executeQuery("select * from VIEWAUTOMOTOR where placa = '"+placa+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWAUTOMOTOR();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewautomotor.class;
-    }
     
 }

@@ -1,39 +1,63 @@
 package Controller;
 
-import java.util.List;
-import entity.Viewregautoentrada;
+
+import entity.VIEWREGAUTOENTRADA;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+
 
 /**
  *
  * @author eagle
  */
-public class viewRegAutoEntradaMgr extends GeneralDAO<viewRegAutoEntradaMgr, String> {
+public class viewRegAutoEntradaMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-        return "SELECT r FROM ViewregAutoEntrada r";
-    }
+public static final viewRegAutoEntradaMgr mgr = new viewRegAutoEntradaMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        return "SELECT r FROM ViewregAutoEntrada r WHERE UPPER(r.placa) LIKE :name ORDER BY r.placa asc";  
-    }
+	public viewRegAutoEntradaMgr() {
+		super( "VIEWREGAUTOENTRADA" );
+		m_titles = new String[]{"horaFechaEntrada", "placa", "ObservacionEntrada"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWREGAUTOENTRADA getBean() {
+		return new VIEWREGAUTOENTRADA();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewregautoentrada) lis.get(i)).getPlaca();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWREGAUTOENTRADA( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWREGAUTOENTRADA getItem( String id ) {
+		return (VIEWREGAUTOENTRADA)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String placa){
+            execute("delete from VIEWREGAUTOENTRADA where placa = '"+placa+"'");
         }
 
-        return lista;
-    }
+        public synchronized VIEWREGAUTOENTRADA getItemForHoraEC(String hora){
+            ArrayList<VIEWREGAUTOENTRADA> lst = executeQuery("select * from VIEWREGAUTOENTRADA where horaFechaEntrada = '"+hora+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWREGAUTOENTRADA();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewregautoentrada.class;
-    }
-    
+         public synchronized VIEWREGAUTOENTRADA getItemByPlaca(String placa){
+            ArrayList<VIEWREGAUTOENTRADA> lst = executeQuery("select * from VIEWREGAUTOENTRADA where placa = '"+placa+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWREGAUTOENTRADA();
+            }
+        }
+
+
+
+   
 }

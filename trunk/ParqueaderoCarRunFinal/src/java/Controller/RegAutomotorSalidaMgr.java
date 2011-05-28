@@ -1,40 +1,53 @@
 package Controller;
 
-import java.util.List;
-import entity.Regautomotorsalida;
+import entity.REGAUTOMOTORSALIDA;
+import java.util.ArrayList;
+import java.sql.ResultSet;
 /**
  *
  * @author eagle
  */
-public class RegAutomotorSalidaMgr extends GeneralDAO<RegAutomotorSalidaMgr, String> {
+public class RegAutomotorSalidaMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-        
-      return "SELECT r FROM regAutomotorSalida r";   
-          
-    }
-    //leemos por hora de salida
-    @Override
-    public String getReadByNameQuery() {
-       return "SELECT r FROM regAutomotorSalida r WHERE UPPER(r.horaFechaSalida) LIKE :name ORDER BY r.horaFechaSalida asc";
-    }
-    //Ojo si no sirve así crear un nuevo metodo abstracto
-    @Override
-    public String[] makeArray(List lis, int tam) {
-         String[] lista = new String[tam];
-        int      i;
+   public static final RegAutomotorSalidaMgr mgr = new RegAutomotorSalidaMgr();
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Regautomotorsalida) lis.get(i)).getHorafechasalida().toString();
+	public RegAutomotorSalidaMgr() {
+		super( "REGAUTOMOTORSALIDA" );
+		m_titles = new String[]{"horaFechaSalida", "horaFechaEntrada", "precio"};
+	}
+
+	@Override
+	protected REGAUTOMOTORSALIDA getBean() {
+		return new REGAUTOMOTORSALIDA();
+	}
+
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new REGAUTOMOTORSALIDA( rs ) );
+	}
+
+	@Override
+	public synchronized REGAUTOMOTORSALIDA getItem( String id ) {
+		return (REGAUTOMOTORSALIDA)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String placa){
+            execute("delete from REGAUTOMOTORSALIDA where placa = '"+placa+"'");
         }
 
-        return lista;
-    }
+        public synchronized REGAUTOMOTORSALIDA getItemForPlaca(String placa){
+            ArrayList<REGAUTOMOTORSALIDA> lst = executeQuery("select * from REGAUTOMOTORSALIDA where placa = '"+placa+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new REGAUTOMOTORSALIDA();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-     return Regautomotorsalida.class;
-    }
+
+
+
+
     
 }

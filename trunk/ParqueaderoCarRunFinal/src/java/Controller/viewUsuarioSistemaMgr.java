@@ -1,39 +1,57 @@
 package Controller;
 
-import java.util.List;
-import entity.Viewusuariosisstema;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.VIEWUSUARIOSISSTEMA;
 
 /**
  *
  * @author eagle
  */
-public class viewUsuarioSistemaMgr extends GeneralDAO<viewUsuarioSistemaMgr, String> {
+public class viewUsuarioSistemaMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-        return "SELECT u FROM ViewUsuarioSisstema u";
-    }
+    public static final viewUsuarioSistemaMgr mgr = new viewUsuarioSistemaMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-       return "SELECT u FROM ViewUsuarioSisstema u WHERE UPPER(u.apellidoUsuario) LIKE :name ORDER BY u.apellidoUsuario asc";
-    }
+	public viewUsuarioSistemaMgr() {
+		super( "VIEWUSUARIOSISSTEMA" );
+		m_titles = new String[]{"cedulaUsuario", "idRolParqueo", "idRolAdmin","nombreUsuario","apellidoUsuario","e-mail", "telefonoUsuario"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-         String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWUSUARIOSISSTEMA getBean() {
+		return new VIEWUSUARIOSISSTEMA();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewusuariosisstema) lis.get(i)).getApellidousuario();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWUSUARIOSISSTEMA( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWUSUARIOSISSTEMA getItem( String id ) {
+		return (VIEWUSUARIOSISSTEMA)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String cedula){
+            execute("delete from VIEWUSUARIOSISSTEMA where cedulaUsuario = '"+cedula+"'");
         }
 
-        return lista; 
-    }
+        public synchronized VIEWUSUARIOSISSTEMA getItemByApellido(String apellido){
+            ArrayList<VIEWUSUARIOSISSTEMA> lst = executeQuery("select * from VIEWUSUARIOSISSTEMA where apellidoUsuario = '"+apellido+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWUSUARIOSISSTEMA();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewusuariosisstema.class;
-    }
-    
+         public synchronized VIEWUSUARIOSISSTEMA getItemByRol(String rol){
+            ArrayList<VIEWUSUARIOSISSTEMA> lst = executeQuery("select * from VIEWUSUARIOSISSTEMA where idRolParqueo = '"+rol+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWUSUARIOSISSTEMA();
+            }
+        }
 }

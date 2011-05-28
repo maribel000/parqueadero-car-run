@@ -1,40 +1,52 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Viewregautosalida;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.VIEWREGAUTOSALIDA;
 
 /**
  *
  * @author eagle
  */
-public class viewRegAutoSalidaMgr extends GeneralDAO<viewRegAutoSalidaMgr, String> {
+public class viewRegAutoSalidaMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-           return "SELECT r FROM ViewregAutoEntrada r";  
-    }
+    public static final viewRegAutoSalidaMgr mgr = new viewRegAutoSalidaMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        return "SELECT r FROM ViewregAutoEntrada r WHERE UPPER(r.horaFechaSalida) LIKE :name ORDER BY r.horaFechaSalida asc";
-    }
+	public viewRegAutoSalidaMgr() {
+		super( "VIEWREGAUTOSALIDA" );
+		m_titles = new String[]{"horaFechaSalida", "horaFechaEntrada", "precio"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-     String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWREGAUTOSALIDA getBean() {
+		return new VIEWREGAUTOSALIDA();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewregautosalida) lis.get(i)).getHorafechasalida().toString();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWREGAUTOSALIDA( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWREGAUTOSALIDA getItem( String id ) {
+		return (VIEWREGAUTOSALIDA)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String placa){
+            execute("delete from VIEWREGAUTOSALIDA where placa = '"+placa+"'");
         }
 
-        return lista;
-    }
+        public synchronized VIEWREGAUTOSALIDA getItemForPlaca(String placa){
+            ArrayList<VIEWREGAUTOSALIDA> lst = executeQuery("select * from VIEWREGAUTOSALIDA where placa = '"+placa+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWREGAUTOSALIDA();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewregautosalida.class;
-    }
-    
+
+
 }

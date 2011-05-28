@@ -1,40 +1,52 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Viewcliente;
 
+import entity.VIEWCLIENTE;
+import java.util.ArrayList;
+import java.sql.ResultSet;
 /**
  *
  * @author eagle
  */
-public class viewClienteMgr extends GeneralDAO<viewClienteMgr, String> {
+public class viewClienteMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-           return "SELECT c FROM ViewCliente c";
-    }
+   public static final viewClienteMgr mgr = new viewClienteMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-       return "SELECT c FROM ViewCliente c WHERE UPPER(c.cedulaCliente) LIKE :name ORDER BY c.cedulaCliente asc";
-    }
+	public viewClienteMgr() {
+		super( "VIEWCLIENTE" );
+		m_titles = new String[]{"cedulaCliente", "numeroContrato", "nombreCliente", "apellidoCliente","telefonoCliente"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWCLIENTE getBean() {
+		return new VIEWCLIENTE();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewcliente) lis.get(i)).getCedulacliente();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWCLIENTE( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWCLIENTE getItem( String id ) {
+		return (VIEWCLIENTE)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String cedula){
+            execute("delete from VIEWCLIENTE where cedulaCliente = '"+cedula+"'");
         }
 
-        return lista;    
-    }
+        public synchronized VIEWCLIENTE getItemForCedula(String cedula){
+            ArrayList<VIEWCLIENTE> lst = executeQuery("select * from VIEWCLIENTE where cedulaCliente = '"+cedula+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWCLIENTE();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewcliente.class;
-    }
+
     
 }

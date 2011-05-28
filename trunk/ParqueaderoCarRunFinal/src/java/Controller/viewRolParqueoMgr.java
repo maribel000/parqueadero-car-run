@@ -1,33 +1,44 @@
 
 package Controller;
 
-import java.util.List;
-import entity.ViewrolParqueo;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.VIEWROLPARQUEO;
 
 /**
  *
  * @author eagle
  */
-public class viewRolParqueoMgr extends GeneralDAO<viewRolParqueoMgr, String> {
+public class viewRolParqueoMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-         return "SELECT r FROM ViewRol Parqueo r";
-    }
+   public static final viewRolParqueoMgr mgr = new viewRolParqueoMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   public viewRolParqueoMgr() {
+		super( "VIEWROLPARQUEO" );
+		m_titles = new String[]{"idRolParqueo", "nombreRolParqueo", "descripRolParqueo"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected VIEWROLPARQUEO getBean() {
+		return new VIEWROLPARQUEO();
+	}
 
-    @Override
-    public Class getEntityClass() {
-       return ViewrolParqueo.class;
-    }
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWROLPARQUEO( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWROLPARQUEO getItem( String id ) {
+		return (VIEWROLPARQUEO)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String id){
+            execute("delete from VIEWROLPARQUEO where idRolParqueo = '"+id+"'");
+        }
+
+
+  
     
 }
