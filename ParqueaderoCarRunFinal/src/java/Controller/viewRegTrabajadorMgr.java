@@ -1,40 +1,58 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Viewregtrabajador;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.VIEWREGTRABAJADOR;
 
 /**
  *
  * @author eagle
  */
-public class viewRegTrabajadorMgr extends GeneralDAO<viewRegTrabajadorMgr, String> {
+public class viewRegTrabajadorMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-              return "SELECT t FROM ViewRegTrabajador t";
-    }
+   public static final viewRegTrabajadorMgr mgr = new viewRegTrabajadorMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        return "SELECT t FROM ViewRegTrabajador t WHERE UPPER(t.cedulaUsuario) LIKE :name ORDER BY t.cedulaUsuario asc";
-    }
+	public viewRegTrabajadorMgr() {
+		super( "VIEWREGTRABAJADOR" );
+		m_titles = new String[]{"idRegTrab", "cedulaUsuario", "diaTrabajado","horaIngreso","observaciones"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWREGTRABAJADOR getBean() {
+		return new VIEWREGTRABAJADOR();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewregtrabajador) lis.get(i)).getCedulausuario();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWREGTRABAJADOR( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWREGTRABAJADOR getItem( String id ) {
+		return (VIEWREGTRABAJADOR)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String id){
+            execute("delete from VIEWREGTRABAJADOR where idRegTrab = '"+id+"'");
         }
 
-        return lista;    
-    }
+        public synchronized VIEWREGTRABAJADOR getItemByCedula(String cedula){
+            ArrayList<VIEWREGTRABAJADOR> lst = executeQuery("select * from VIEWREGTRABAJADOR where cedulUsuario = '"+cedula+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWREGTRABAJADOR();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewregtrabajador.class;
-    }
-    
+         public synchronized VIEWREGTRABAJADOR getItemByDia(String dia){
+            ArrayList<VIEWREGTRABAJADOR> lst = executeQuery("select * from VIEWREGTRABAJADOR where diaTrabajado = '"+dia+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWREGTRABAJADOR();
+            }
+        }
 }

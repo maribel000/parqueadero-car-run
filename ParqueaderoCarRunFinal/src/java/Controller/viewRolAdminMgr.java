@@ -1,32 +1,44 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Viewroladmin;
+
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.VIEWROLADMIN;
 /**
  *
  * @author eagle
  */
-public class viewRolAdminMgr extends GeneralDAO<viewRolAdminMgr, String> {
+public class viewRolAdminMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-       return "SELECT r FROM ViewRolAdmin r";
-    }
+    public static final viewRolAdminMgr mgr = new viewRolAdminMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   public viewRolAdminMgr() {
+		super( "VIEWROLADMIN" );
+		m_titles = new String[]{"idRolAdmin", "nombreRolAdmin", "duracion","descripRolAdmin"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected VIEWROLADMIN getBean() {
+		return new VIEWROLADMIN();
+	}
 
-    @Override
-    public Class getEntityClass() {
-        return Viewroladmin.class;
-    }
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWROLADMIN( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWROLADMIN getItem( String id ) {
+		return (VIEWROLADMIN)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String id){
+            execute("delete from VIEWROLADMIN where idRolAdmin = '"+id+"'");
+        }
+
+
+
     
 }

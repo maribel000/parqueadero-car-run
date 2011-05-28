@@ -1,40 +1,64 @@
 
 package Controller;
 
-import java.util.List;
+
 import entity.REGAUTOMOTORENTRADA;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+
 
 /**
  *
  * @author eagle
  */
-public class RegAutomotorEntradaMgr extends GeneralDAO<RegAutomotorEntradaMgr, String> {
+public class RegAutomotorEntradaMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-        return "SELECT r FROM regAutomotorEntrada r";
-    }
-    //buscamos el registro de entrada por la placa
-    @Override
-    public String getReadByNameQuery() {
-     return "SELECT r FROM regAutomotorEntrada r WHERE UPPER(r.placa) LIKE :name ORDER BY r.placa asc";  
-    }
+   public static final RegAutomotorEntradaMgr mgr = new RegAutomotorEntradaMgr();
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        String[] lista = new String[tam];
-        int      i;
+	public RegAutomotorEntradaMgr() {
+		super( "REGAUTOMOTORENTRADA" );
+		m_titles = new String[]{"horaFechaEntrada", "placa", "ObservacionEntrada"};
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((REGAUTOMOTORENTRADA) lis.get(i)).getPlaca();
+	@Override
+	protected REGAUTOMOTORENTRADA getBean() {
+		return new REGAUTOMOTORENTRADA();
+	}
+
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new REGAUTOMOTORENTRADA( rs ) );
+	}
+
+	@Override
+	public synchronized REGAUTOMOTORENTRADA getItem( String id ) {
+		return (REGAUTOMOTORENTRADA)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String placa){
+            execute("delete from REGAUTOMOTORENTRADA where placa = '"+placa+"'");
         }
 
-        return lista; 
-    }
+        public synchronized REGAUTOMOTORENTRADA getItemForHoraEC(String hora){
+            ArrayList<REGAUTOMOTORENTRADA> lst = executeQuery("select * from REGAUTOMOTORENTRADA where horaFechaEntrada = '"+hora+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new REGAUTOMOTORENTRADA();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return REGAUTOMOTORENTRADA.class;
-    }
-    
+         public synchronized REGAUTOMOTORENTRADA getItemByPlaca(String placa){
+            ArrayList<REGAUTOMOTORENTRADA> lst = executeQuery("select * from REGAUTOMOTORENTRADA where placa = '"+placa+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new REGAUTOMOTORENTRADA();
+            }
+        }
+
+
+
+
 }

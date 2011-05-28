@@ -1,31 +1,42 @@
 package Controller;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.VIEWTIPOAUTOMOTOR;
+
 
 /**
  *
  * @author eagle
  */
-public class viewTipoAutomotorMgr extends GeneralDAO<viewAutomotorMgr, String>   {
+public class viewTipoAutomotorMgr extends DbManager   {
 
-    @Override
-    public String getReadQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+    public static final viewTipoAutomotorMgr mgr = new viewTipoAutomotorMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   public viewTipoAutomotorMgr() {
+		super( "VIEWTIPOAUTOMOTOR" );
+		m_titles = new String[]{"idTipoAutomotor", "tipo"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected VIEWTIPOAUTOMOTOR getBean() {
+		return new VIEWTIPOAUTOMOTOR();
+	}
 
-    @Override
-    public Class getEntityClass() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWTIPOAUTOMOTOR( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWTIPOAUTOMOTOR getItem( String id ) {
+		return (VIEWTIPOAUTOMOTOR)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String tipo){
+            execute("delete from VIEWTIPOAUTOMOTOR where tipo = '"+tipo+"'");
+        }
+
     
 }

@@ -1,33 +1,44 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Rolparqueo;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.ROLPARQUEO;
 
 /**
  *
  * @author eagle
  */
-public class RolParqueoMgr extends GeneralDAO<RolParqueoMgr, String> {
+public class RolParqueoMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-        return "SELECT r FROM rolParqueo r";
-    }
+  public static final RolParqueoMgr mgr = new RolParqueoMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+   public RolParqueoMgr() {
+		super( "ROLPARQUEO" );
+		m_titles = new String[]{"idRolParqueo", "nombreRolParqueo", "descripRolParqueo"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	protected ROLPARQUEO getBean() {
+		return new ROLPARQUEO();
+	}
 
-    @Override
-    public Class getEntityClass() {
-        return Rolparqueo.class;
-    }
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new ROLPARQUEO( rs ) );
+	}
+
+	@Override
+	public synchronized ROLPARQUEO getItem( String id ) {
+		return (ROLPARQUEO)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String id){
+            execute("delete from ROLPARQUEO where idRolParqueo = '"+id+"'");
+        }
+
+
+
     
 }

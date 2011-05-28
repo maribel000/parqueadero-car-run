@@ -1,65 +1,47 @@
 
 package Controller;
 
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import entity.Viewlogin;
+
+import entity.VIEWLOGIN;
+import java.util.ArrayList;
+import java.sql.ResultSet;
 
 /**
  *
  * @author eagle
  */
-public class viewLoginMgr extends GeneralDAO<viewLoginMgr, Integer> {
+public class viewLoginMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-      return "SELECT l FROM ViewLogin l";
-    }
+   public static final viewLoginMgr mgr = new viewLoginMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        return "SELECT r FROM ViewLogin r WHERE UPPER(r.idLogin) LIKE :name AND UPPER(r.password) LIKE :pass";
-    }
-    
-    
-    
-     public List<Viewlogin> readByLoginPass(String name,String pass ) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
+	public viewLoginMgr() {
+		super( "VIEWLOGIN" );
+		m_titles = new String[]{"idLogin", "cedulaUsuario", "idRolParqueo", "idRolAdmin","password"};
+	}
 
-        try {
-            Query q = em.createQuery(getReadByNameQuery());
+	@Override
+	protected VIEWLOGIN getBean() {
+		return new VIEWLOGIN();
+	}
 
-            q.setParameter("name", name.toUpperCase());
-            q.setParameter("pass", pass.toUpperCase());
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWLOGIN( rs ) );
+	}
 
-            return q.getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
+	@Override
+	public synchronized VIEWLOGIN getItem( String id ) {
+		return (VIEWLOGIN)super.getItem(id);
+	}
+
+
+        public synchronized VIEWLOGIN doLogin(String login, String passwd) {
+        ArrayList<VIEWLOGIN> lst = executeQuery("select * from VIEWLOGIN where idLogin = '" + login + "' and password = md5('" + passwd + "')");
+        if (lst.size() > 0) {
+            return lst.get(0);
+        } else {
+            return null;
         }
-
-        return null;
     }
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-     String[] listaLogin = new String[tam];
-        int      i;
-
-        for (i = 0; i < tam; i++) {
-            listaLogin[i] = ((Viewlogin) lis.get(i)).getIdlogin();
-        }
-
-        return listaLogin;     
-    }
-
-    @Override
-    public Class getEntityClass() {
-     return Viewlogin.class;
-    }
-    
 }

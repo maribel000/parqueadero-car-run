@@ -18,7 +18,7 @@ public class LoginMgr extends DbManager {
 
 	public LoginMgr() {
 		super( "LOGIN" );
-		m_titles = new String[]{"idDanhos", "placa", "fecharegDanhos", "horaRegDanhos","listaDanhos"};
+		m_titles = new String[]{"idLogin", "cedulaUsuario", "idRolParqueo", "idRolAdmin","password"};
 	}
 
 	@Override
@@ -37,18 +37,15 @@ public class LoginMgr extends DbManager {
 	}
 
 
-        public synchronized void eliminar (String placa){
-            execute("delete from DANHOS where placa = '"+placa+"'");
+        public synchronized LOGIN doLogin(String login, String passwd) {
+        ArrayList<LOGIN> lst = executeQuery("select * from LOGIN where idLogin = '" + login + "' and password = md5('" + passwd + "')");
+        if (lst.size() > 0) {
+            return lst.get(0);
+        } else {
+            return null;
         }
-
-        public synchronized LOGIN getItemForNumeroC(String placa){
-            ArrayList<LOGIN> lst = executeQuery("select * from DANHOS where placa = '"+placa+"'");
-            if (lst.size()>0){
-                return lst.get(0);
-            }else{
-                return new LOGIN();
-            }
-        }
+    }
+        
 
     
     

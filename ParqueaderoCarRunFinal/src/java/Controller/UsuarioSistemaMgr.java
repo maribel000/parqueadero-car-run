@@ -1,40 +1,60 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Usuariosistema;
+import java.util.ArrayList;
+import java.sql.ResultSet;
+import entity.USUARIOSISTEMA;
 
 /**
  *
  * @author eagle
  */
-public class UsuarioSistemaMgr extends GeneralDAO<UsuarioSistemaMgr, String> {
+public class UsuarioSistemaMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-            return "SELECT u FROM usuarioSistema u";
-    }
-  //leemos de usuario sistema por su apellido
-    @Override
-    public String getReadByNameQuery() {
-        return "SELECT u FROM usuarioSistema u WHERE UPPER(u.apellidoUsuario) LIKE :name ORDER BY u.apellidoUsuario asc";
-    }
+    public static final UsuarioSistemaMgr mgr = new UsuarioSistemaMgr();
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-         String[] lista = new String[tam];
-        int      i;
+	public UsuarioSistemaMgr() {
+		super( "REGAUTOMOTORENTRADA" );
+		m_titles = new String[]{"cedulaUsuario", "idRolParqueo", "idRolAdmin","nombreUsuario","apellidoUsuario","e-mail", "telefonoUsuario"};
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Usuariosistema) lis.get(i)).getApellidousuario();
+	@Override
+	protected USUARIOSISTEMA getBean() {
+		return new USUARIOSISTEMA();
+	}
+
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new USUARIOSISTEMA( rs ) );
+	}
+
+	@Override
+	public synchronized USUARIOSISTEMA getItem( String id ) {
+		return (USUARIOSISTEMA)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String cedula){
+            execute("delete from USUARIOSISTEMA where cedulaUsuario = '"+cedula+"'");
         }
 
-        return lista; 
-    }
+        public synchronized USUARIOSISTEMA getItemByApellido(String apellido){
+            ArrayList<USUARIOSISTEMA> lst = executeQuery("select * from USUARIOSISTEMA where apellidoUsuario = '"+apellido+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new USUARIOSISTEMA();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Usuariosistema.class;
-    }
+         public synchronized USUARIOSISTEMA getItemByRol(String rol){
+            ArrayList<USUARIOSISTEMA> lst = executeQuery("select * from USUARIOSISTEMA where idRolParqueo = '"+rol+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new USUARIOSISTEMA();
+            }
+        }
+
     
 }

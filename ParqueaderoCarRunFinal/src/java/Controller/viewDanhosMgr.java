@@ -1,40 +1,53 @@
 
 package Controller;
 
-import java.util.List;
-import entity.Viewdanhos;
+
+import entity.VIEWDANHOS;
+import java.util.ArrayList;
+import java.sql.ResultSet;
 
 /**
  *
  * @author eagle
  */
-public class viewDanhosMgr extends GeneralDAO<viewDanhosMgr, String> {
+public class viewDanhosMgr extends DbManager {
 
-    @Override
-    public String getReadQuery() {
-            return "SELECT d FROM ViewDnhos d";
-    }
+    public static final viewDanhosMgr mgr = new viewDanhosMgr();
 
-    @Override
-    public String getReadByNameQuery() {
-        return "SELECT d FROM ViewDnhos d WHERE UPPER(d.placa) LIKE :name ORDER BY d.placa asc";
-    }
+	public viewDanhosMgr() {
+		super( "VIEWDANHOS" );
+		m_titles = new String[]{"idDanhos", "placa", "fecharegDanhos", "horaRegDanhos","listaDanhos"};
+	}
 
-    @Override
-    public String[] makeArray(List lis, int tam) {
-         String[] lista = new String[tam];
-        int      i;
+	@Override
+	protected VIEWDANHOS getBean() {
+		return new VIEWDANHOS();
+	}
 
-        for (i = 0; i < tam; i++) {
-            lista[i] = ((Viewdanhos) lis.get(i)).getPlaca();
+	@Override
+	protected void addObject( ArrayList v, ResultSet rs ) {
+		v.add( new VIEWDANHOS( rs ) );
+	}
+
+	@Override
+	public synchronized VIEWDANHOS getItem( String id ) {
+		return (VIEWDANHOS)super.getItem(id);
+	}
+
+
+        public synchronized void eliminar (String placa){
+            execute("delete from VIEWDANHOS where placa = '"+placa+"'");
         }
 
-        return lista; 
-    }
+        public synchronized VIEWDANHOS getItemForNumeroC(String placa){
+            ArrayList<VIEWDANHOS> lst = executeQuery("select * from VIEWDANHOS where placa = '"+placa+"'");
+            if (lst.size()>0){
+                return lst.get(0);
+            }else{
+                return new VIEWDANHOS();
+            }
+        }
 
-    @Override
-    public Class getEntityClass() {
-        return Viewdanhos.class;
-    }
+
     
 }
