@@ -1,4 +1,5 @@
 <%@page import="entity.LOGIN"%>
+<%@include file="checksession.jsp"%>
 <%@page import="Controller.LoginMgr"%>
 <%
 
@@ -6,26 +7,33 @@
    String passw = request.getParameter("passwd")== null ? "" : request.getParameter("passwd");
  
         LOGIN person = new LOGIN();
-        if (!uname.equals("")) {
+          /*Usuarios: pperez, jcperez,joseperez,mperez (C, Ca, Pa, Tes) */
+           if (!uname.equals("")) {
            person = LoginMgr.mgr.doLogin(uname, passw);
            if (person != null) {
-               //response.sendRedirect("../Cajero/indexCajero.jsp");
-              // HttpSession sesionOK = request.getSession();
-               // session.setAttribute("USUARIO", login);
-               // if(tipoLogin==1){
-                //response.sendRedirect("../Coordinador/index.jsp");
-                //}else if(tipoLogin==2){
-                 //}else if(tipoLogin==3){
-                //response.sendRedirect("../Parqueador/index.jsp");
-               // }else if(tipoLogin==4){
-                //response.sendRedirect("../Tesorero/index.jsp");
+              HttpSession sesionOK = request.getSession();
+              sesionOK.setAttribute("rol", person.CEDULAUSUARIO);
+              if(person.IDROLPARQUEO.equals("1"))
+                {
+                 response.sendRedirect("../Coordinador/index.jsp");
+                }else if(person.IDROLPARQUEO.equals("2"))
+                        {
+                         response.sendRedirect("../Cajero/indexCajero.jsp");
+                       }else if(person.IDROLPARQUEO.equals("3"))
+                               {
+                                response.sendRedirect("../Parqueador/IndexParq.jsp");
+                             }else if(person.IDROLPARQUEO.equals("4"))
+                                     {
+                                      response.sendRedirect("../Tesorero/index.jsp");
+                                    }
+
                System.out.println("soy diferente de null ");
                 }
              else{ response.sendRedirect("LoginFormError.jsp");}
             }
 
 
-       // else { response.sendRedirect("LoginFormError.jsp");}
+       else { response.sendRedirect("LoginFormError.jsp");}
                
          
     

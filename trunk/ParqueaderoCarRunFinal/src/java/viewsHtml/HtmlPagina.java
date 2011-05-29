@@ -52,7 +52,6 @@ public class HtmlPagina {
                x +="<head>\n";
                x +="<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n";
                x +="<link rel='stylesheet' href='" + m_path + "desig.css' type='text/css' />\n\t";
-               x +="<script src='" + m_path + "js/Encriptacion.js' type='text/javascript'></script>\n\t";
                x +="<title>Parqueadero Car Run</title>\n";
                x+="</head>\n";
     return x;
@@ -97,11 +96,11 @@ public class HtmlPagina {
     public String getBotonLogin(){
         String x="";
         if(!session){
-        x="<a href='/ParqueaderoCarRunFinal/IngresoSistema/index.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=white>Ingresar</b></FONT></a>";
+        x="<a href='/ParqueaderoCarRunFinal/IngresoSistema/index.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#C0C0C0>Ingresar</b></FONT></a>";
         return x;    
         }else{
         /*Administrador Principal*/ if(this.tipodesesion==1){
-        x="<a href='/ParqueaderoCarRunFinal/IngresoSistema/inicio.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=white>Inicio</b></FONT></a><pre>   </pre><a href='/ParqueaderoCarRunFinal/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=white>Salir</b></FONT></a>";return x;
+        x="<a href='/ParqueaderoCarRunFinal/IngresoSistema/inicio.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=white>Inicio</b></FONT></a><pre>   </pre><a href='/ParqueaderoCarRunFinal/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#00BFFF>Salir</b></FONT></a>";return x;
         }
         
         

@@ -14,8 +14,9 @@ body {
     	border: 1px solid #000000;
     	text-align: left;
     }
+   
     .twoColElsLtHdr #header {
-    	background: #ff8c00;
+    	background: #ff8c00 ;
     	padding: 0 10px;
     }
     .twoColElsLtHdr #header h1 {
@@ -72,4 +73,12 @@ body {
     .twoColElsLtHdr #sidebar1 { padding-top: 30px; }
     .twoColElsLtHdr #mainContent { zoom: 1; padding-top: 15px; }
 
+a:link
+{
+color: #87CEFA;
+}
+a:visited
+{
+color: #00BFFF;
+}
 
