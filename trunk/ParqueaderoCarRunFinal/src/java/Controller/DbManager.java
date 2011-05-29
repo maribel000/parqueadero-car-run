@@ -33,8 +33,8 @@ public class DbManager {
         Connection con = DBPool.getConnection(m_nConnection);
         try {
             Statement stm = con.createStatement();
-            stm.execute("SET CHARACTER SET utf8");
-            stm.execute("SET NAMES utf8");
+           //stm.execute("SET CHARACTER SET utf8");
+           //stm.execute("SET NAMES utf8");
             ResultSet rs = stm.executeQuery(sz);
             while (rs.next()) {
                 addObject(v, rs);

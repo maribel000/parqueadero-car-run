@@ -6,7 +6,7 @@
 if (session.getAttribute("TIPO_USUARIO") != null) {
 h.session=true;
 }
-    h.setTipodeSesion(Tipo_Usuario);
+   // h.setTipodeSesion(Tipo_Usuario);
     h.setFreeHtml(" <FONT FACE=\"Verdana\" SIZE=4><b> Parqueadero Car Run</b></font><br> " +
             "<p><FONT FACE=\"Verdana\" SIZE=3>"+ "</font></p>");
 %>

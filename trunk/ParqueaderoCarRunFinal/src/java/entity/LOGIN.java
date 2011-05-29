@@ -41,4 +41,23 @@ public class LOGIN extends BasicBean {
                 }
            return sql;
         }
+
+    @Override
+     public String getHtmlRow() {
+        String sz = "";
+        sz += "<td class='st4middle'>" + CEDULAUSUARIO + "</td>";
+        sz += "<td class='st4middle'>" + IDLOGIN + "</td>";
+        sz += "<td class='st4middle'>" + IDROLPARQUEO + "</td>";
+        return sz;
+    }
+
+    @Override
+    public String getIdentifier() {
+        return "idLogin=" + id;
+    }
+
+
+
+
+
    }

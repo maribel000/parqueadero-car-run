@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 
 public class LoginMgr extends DbManager {
     
-  public static final LoginMgr mgr = new LoginMgr();
+public static final LoginMgr mgr = new LoginMgr();
 
 	public LoginMgr() {
 		super( "LOGIN" );
@@ -38,7 +38,7 @@ public class LoginMgr extends DbManager {
 
 
         public synchronized LOGIN doLogin(String login, String passwd) {
-        ArrayList<LOGIN> lst = executeQuery("select * from LOGIN where idLogin = '" + login + "' and password = md5('" + passwd + "')");
+        ArrayList<LOGIN> lst = executeQuery("select * from LOGIN where idLogin = '" + login + "'and'" + passwd + "'= DECRYPTBYPASSPHRASE('@¿!!35%__./=|vbtk,)', password)");
         if (lst.size() > 0) {
             return lst.get(0);
         } else {

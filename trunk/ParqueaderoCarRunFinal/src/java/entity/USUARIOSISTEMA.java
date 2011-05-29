@@ -50,4 +50,25 @@ public class USUARIOSISTEMA extends BasicBean {
                 }
            return sql;
         }
+
+    @Override
+     public String getHtmlRow() {
+        String sz = "";
+        sz += "<td class='st4middle'>" + CEDULAUSUARIO + "</td>";
+        sz += "<td class='st4middle'>" + IDROLPARQUEO + "</td>";
+        sz += "<td class='st4middle'>" + IDROLADMIN + "</td>";
+        sz += "<td class='st4middle'>" + NOMBREUSUARIO + "</td>";
+        sz += "<td class='st4middle'>" + APELLIDOUSUARIO + "</td>";
+        sz += "<td class='st4middle'>" + E_MAIL + "</td>";
+        sz += "<td class='st4middle'>" + TELEFONOUSUARIO + "</td>";
+        return sz;
+    }
+
+    @Override
+    public String getIdentifier() {
+        return "idUsuarioSistema=" + id;
+    }
+
+
+
    }
