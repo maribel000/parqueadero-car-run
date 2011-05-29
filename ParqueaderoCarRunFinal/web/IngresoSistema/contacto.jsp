@@ -7,10 +7,10 @@ if (session.getAttribute("TIPO_USUARIO") != null) {
 h.session=true;
 }
     //h.setTipodeSesion(Tipo_Usuario);
-    h.setFreeHtml(" <FONT FACE=\"Verdana\" SIZE=4><b> CONTACTO</b></font><br> " +
-            "<p><FONT FACE=\"Verdana\" SIZE=3>Si desea conocer más acerca del proyecto" +
+    h.setFreeHtml(" <FONT FACE=\"Verdana\" SIZE=4 color=#87CEFA><b> CONTACTO</b></font><br> " +
+            "<p><FONT FACE=\"Verdana\" SIZE=3 COLOR=#C0C0C0>Si desea conocer más acerca del proyecto" +
             " visite nuestra página web:</font></p><br><br>" +
-            " <FONT FACE=\"Verdana\" SIZE=4><a href='http://unr.sytes.net/dbd'>Grupo 2</font> </a>");
+            " <FONT FACE=\"Verdana\" SIZE=3 color=#87CEFA><a href='http://unr.sytes.net/dbd'>Grupo 2</font> </a>");
 %>
 
 <%=h.getSource()%>

@@ -2,13 +2,19 @@
 <%@include file="checksession.jsp"%>
 <%@page import="viewsHtml.*"%>
 
-<% HtmlPagina h = new HtmlPagina();
+<% HtmlPagina page0 = new HtmlPagina();
 if (session.getAttribute("TIPO_USUARIO") != null) {
-h.session=true;
+page0.session=true;
 }
-   // h.setTipodeSesion(Tipo_Usuario);
-    h.setFreeHtml(" <FONT FACE=\"Verdana\" SIZE=4><b> Parqueadero Car Run</b></font><br> " +
-            "<p><FONT FACE=\"Verdana\" SIZE=3>"+ "</font></p>");
+    //h.setTipodeSesion(Tipo_Usuario);
+
+ page0.setFreeHtml(" <FONT FACE=\"Verdana\" SIZE=3 COLOR=#87CEFA><b> Parqueadero CarRun</b></font><br> " +
+            "<p><FONT FACE=\"Verdana\" SIZE=3 COLOR=#C0C0C0>Este proyecto es una aplicacion web que sirve para la administración del " +
+            "parqueadero del mismo nombre. Fue desarrollado por Raúl Villabona Suárez como proyecto final de la materia " +
+            "Diseño de bases de datos, en la Universidad Nacional de Colombia" +".</font></p>");
+
+
+
 %>
 
-<%=h.getSource()%>
+<%=page0.getSource()%>
