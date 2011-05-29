@@ -7,11 +7,12 @@ package viewsHtml;
  */
 
 public class HtmlPagina {
-    public boolean session;
+    public boolean  session;
     private boolean BotonGestionCoord;
     private boolean BotonGestionCajera;
     private boolean BotonGestionParque;
     private boolean BotonesDatosPersonales;
+    private String m_path = "../";
     
     private int tipodesesion;
     private FreeHtml freehtml;
@@ -50,91 +51,10 @@ public class HtmlPagina {
         String x = "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \n";
                x +="<head>\n";
                x +="<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n";
-               x +=" <title>Parqueadero Car Run</title>\n";
-               x +=" <style type=\"text/css\">\n";
-               x +=" <!-- \n";
-               x +="body  {\n";
-    	x +="font: 70%  Geneva, Arial, Helvetica, sans-serif;\n";
-    	x +="background: #FFFFFF;\n";
-    	x +="margin: 0; \n";
-    	x +="padding: 0;\n";
-    	x +="text-align: center; \n";
-    	x +="color: #000000;\n";
-    x +="}\n";
-
-    x +=".twoColElsLtHdr #container {\n";
-    x +="	width: 1000px;  \n";
-    x +="	background: #FFFFFF;\n";
-    x +="	margin: 0 auto; \n";
-    x +="	border: 1px solid #000000;\n";
-    x +="	text-align: left;\n";
-    x +="}\n";
-    x +=".twoColElsLtHdr #header {\n";
-    x +="	background: #ff8c00;\n";
-    x +="	padding: 0 10px;\n";
-    x +="}\n";
-    x +=".twoColElsLtHdr #header h1 {\n";
-    x +="	margin: 0; \n";
-    x +="	padding: 10px 0; \n";
-    x +="}\n";
-    x +="#apDiv1 {\n";
-    x +="position:absolute;\n";
-    x +="	left:950px;\n";
-x +="	top:10px;\n";
-x +="	width:160px;\n";
-x +="	height:60px;\n";
-x +="	z-index:1;\n";
-x +="}\n";
-    
-    
-    x +=".twoColElsLtHdr #sidebar1 {\n";
-    x +="	float: left;\n";
-    x +="	width: 12em; \n";
-    x +="	background: #FFFFFF; \n";
-    x +="	padding: 15px 0; \n";
-    x +="}\n";
-    x +=".twoColElsLtHdr #sidebar1 h3, .twoColElsLtHdr #sidebar1 p {\n";
-    x +="	margin-left: 10px; \n";
-    x +="	margin-right: 10px;\n";
-    x +="}\n";
-
-    
-    x +=".twoColElsLtHdr #mainContent {\n";
-    x +="	margin: 0 1.5em 0 13em; \n";
-    x +="}\n";
-    x +=".twoColElsLtHdr #footer {\n";
-    x +="	padding: 0 10px; \n";
-    x +="	background:#FFFAFA;\n";
-    x +="}\n";
-    x +=".twoColElsLtHdr #footer p {\n";
-    x +="	margin: 0; \n";
-    x +="	padding: 10px 0; \n";
-    x +="}\n";
-
-   
-    x +=".fltrt { \n";
-    x +="	float: right;\n";
-    x +="	margin-left: 8px;\n";
-    x +="}\n";
-    x +=".fltlft { \n";
-    x +="	float: left;\n";
-    x +="	margin-right: 8px;\n";
-    x +="}\n";
-    x +=" .clearfloat { \n";
-    x +=" 	clear:both;\n";
-    x +="    height:0;\n";
-    x +="    font-size: 1px;\n";
-    x +="    line-height: 0px;\n";
-    x +="}\n";
-    x +="-->\n";
-    x +="</style><!--[if IE]>\n";
-    x +="<style type=\"text/css\">\n";
-   
-    x +=".twoColElsLtHdr #sidebar1 { padding-top: 30px; }\n";
-    x +=".twoColElsLtHdr #mainContent { zoom: 1; padding-top: 15px; }\n";
-   
-    x +="</style>\n";
-    x +="<![endif]--></head>\n";
+               x +="<link rel='stylesheet' href='" + m_path + "desig.css' type='text/css' />\n\t";
+               x +="<script src='" + m_path + "js/Encriptacion.js' type='text/javascript'></script>\n\t";
+               x +="<title>Parqueadero Car Run</title>\n";
+               x+="</head>\n";
     return x;
     }
 

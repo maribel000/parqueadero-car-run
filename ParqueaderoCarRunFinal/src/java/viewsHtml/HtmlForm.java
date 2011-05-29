@@ -1,6 +1,8 @@
 
 package viewsHtml;
 
+import javax.swing.text.Document;
+
 /**
  *
  * @author eagle
@@ -28,13 +30,17 @@ public class HtmlForm {
         form+="</table></center>\n";
         return form;
     }
+     //<form method='post' onSubmit= 'document.log.pass.value = hex_md5(document.log.pas.value);'>
 
-    public void HtmlFormulario(String Nombre_Formulario, String Direccion, String Nombre_Tabla,String Dim ){
-        form="<center><form action="+Direccion+" method=\"get\" name="+Nombre_Formulario+" target=\"_self\">\n";
-        form+="<table width=\""+Dim+"\" height=\"110\" border=\"1\" cellspacing=\"1\" bordercolor=\"#FFFFFF\" bgcolor=\"#FF8C00\">\n";
+    public void HtmlFomLogin(String Nombre_Formulario, String Direccion, String Nombre_Tabla, String tam ){
+        form="<center><form action="+Direccion+" method=\"post\" onSubmit="+"name="+Nombre_Formulario+" target=\"_self\">\n";
+        form+="<table width=\""+tam+"\" height=\"110\" border=\"1\" cellspacing=\"1\" bordercolor=\"#FFFFFF\" bgcolor=\"#FF8C00\">\n";
         form+="<tr>\n";
         form+="<td colspan=\"2\"><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>"+Nombre_Tabla+"</b></FONT></td>\n";
         form+="</tr>\n";
+
+
+
     }
 
     public void addTextField(String Nombre, String Nombre_Text,String Max, String Value){
