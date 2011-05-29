@@ -17,8 +17,9 @@ public final class requestLoginConfig {
         public requestLoginConfig(String url, String user, String pass) {
             try {
                 Class.forName(m_name);
+                System.out.println("Driver successful load");
             } catch (Exception e) {
-                System.out.println("not driver found:" + e.toString());
+                System.out.println("No driver found: " + e.toString());
             }
             m_URL = url;
             m_user = user;
@@ -30,12 +31,26 @@ public final class requestLoginConfig {
         public void open() {
             try {
                 m_connection = DriverManager.getConnection(m_URL, m_user, m_password);
+                System.out.println("full connection to: "+m_connection);
             } catch (SQLException e) {
+                System.out.println("No Connetion: ");
                 System.out.println(e);
+                
+
+
             }
         }
 
         public void close() {
 
         }
+
+ /*public static void main(String[] args) {
+ String m_URL = "jdbc:jtds:sqlserver://168.176.36.26:1433";
+ String m_user = "rvillabonas";
+ String m_password = "s02257370";
+ requestLoginConfig con = new requestLoginConfig(m_URL, m_user, m_password);
+
+ }*/
+
     }

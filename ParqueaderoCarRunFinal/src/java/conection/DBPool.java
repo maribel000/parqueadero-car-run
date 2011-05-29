@@ -23,11 +23,10 @@ public class DBPool {
 
     public static Connection getConnection(int index) {
         try {
-            String host = "192.168.36.26:1433";
+            String host = "168.176.36.26:1433";
             String usr = "rvillabonas";
-            String psw = "s02257370";   //Ojo con el encoding
-            pool.m_lstConnections.add(new requestLoginConfig("jdbc:jtds:sqlserver://" + host + "/dbd_2?useEncoding=true&characterEncoding=UTF-8", usr, psw));
-
+            String psw = "s02257370";
+            pool.m_lstConnections.add(new requestLoginConfig("jdbc:jtds:sqlserver://"+host, usr, psw));
             requestLoginConfig it = pool.m_lstConnections.get(index);
             if (it.m_connection == null || it.m_connection.isClosed()) {
                 it.open();
@@ -59,7 +58,17 @@ public class DBPool {
         requestLoginConfig it = pool.m_lstConnections.get(index);
         it.close();
     }
+
+   /* public static void main(String[] args) {
+DBPool con = new DBPool();
+con.getConnection(0);
+
+}*/
+
 }
+
+
+
 
 
 
