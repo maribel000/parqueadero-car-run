@@ -6,7 +6,7 @@
 
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 
-<% response.sendRedirect("IngresoSistema/index.jsp");
+<% response.sendRedirect("IngresoSistema/inicio.jsp");
 %>
 
 

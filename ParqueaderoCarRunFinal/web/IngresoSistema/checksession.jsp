@@ -8,12 +8,12 @@
 <%@page import="entity.*"%>
 <%
     //Integer Tipo_Usuario;
-   // Login login;
+    // Login login;
     //if (session.getAttribute("TIPO_USUARIO") == null) {
-     //Tipo_Usuario = 0;
+    //Tipo_Usuario = 0;
     // login = null;
-   // }else{
+    // }else{
     //Tipo_Usuario = (Integer) session.getAttribute("TIPO_USUARIO");
-  //  login = (Login) session.getAttribute("USUARIO");
-   // }
+    //  login = (Login) session.getAttribute("USUARIO");
+    // }
 %>

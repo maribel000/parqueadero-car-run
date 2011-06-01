@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="" %>
 <%@include file="checksession.jsp"%>
 <%@page import="viewsHtml.*"%>
 
@@ -7,14 +7,14 @@ if (session.getAttribute("TIPO_USUARIO") != null) {
 page0.session=true;
 }
     //h.setTipodeSesion(Tipo_Usuario);
-
- page0.setFreeHtml(" <FONT FACE=\"Verdana\" SIZE=3 COLOR=#87CEFA><b> Parqueadero CarRun</b></font><br> " +
-            "<p><FONT FACE=\"Verdana\" SIZE=3 COLOR=#C0C0C0>Este proyecto es una aplicacion web que sirve para la administraci√≥n del " +
-            "parqueadero del mismo nombre. Fue desarrollado por Ra√∫l Villabona Su√°rez como proyecto final de la materia " +
-            "Dise√±o de bases de datos, en la Universidad Nacional de Colombia" +".</font></p>");
-
-
-
+page0.setPath(1);
+ page0.setFreeHtml("<h1>Parqueadero CarRun</h1>" +
+            "<p>Es una aplicacion web que sirve para la administraciÛn del "+ 
+            "parqueadero del mismo nombre. Fue desarrollado por UNDevelopment "+ 
+            "como proyecto final de la materia DiseÒo de bases de datos, "+
+            "en la Universidad Nacional de Colombia.</p>\n"+
+            "<p>Visita <a href=\"http://unr.sytes.net/dbd/\" title=\"DBD UNAL\">nuestro sitio web</a> para m·s informaciÛn.</p>");
 %>
 
 <%=page0.getSource()%>
+<%%>
