@@ -24,8 +24,8 @@ public class DBPool {
     public static Connection getConnection(int index) {
         try {
             String host = "168.176.36.26:1433";
-            String usr = "rvillabonas";
-            String psw = "s02257370";
+            String usr = "";
+            String psw = "";
             pool.m_lstConnections.add(new requestLoginConfig("jdbc:jtds:sqlserver://"+host, usr, psw));
             requestLoginConfig it = pool.m_lstConnections.get(index);
             if (it.m_connection == null || it.m_connection.isClosed()) {
