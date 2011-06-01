@@ -32,9 +32,9 @@ public class HtmlForm {
     }
      //<form method='post' onSubmit= 'document.log.pass.value = hex_md5(document.log.pas.value);'>
 
-    public void HtmlFomLogin(String Nombre_Formulario, String Direccion, String Nombre_Tabla, String tam ){
+    public void HtmlFormLogin(String Nombre_Formulario, String Direccion, String Nombre_Tabla, String tam ){
         form="<center><form action="+Direccion+" method=\"post\" onSubmit="+"name="+Nombre_Formulario+" target=\"_self\">\n";
-        form+="<table width=\""+tam+"\" height=\"110\" border=\"1\" cellspacing=\"1\" bordercolor=\"#FFFFFF\" bgcolor=\"#FF8C00\">\n";
+        form+="<table width=\""+tam+"\" height=\"110\" border=\"0\" cellspacing=\"1\" bordercolor=\"#FFFFFF\" bgcolor=\"#FF8C00\">\n";
         form+="<tr>\n";
         form+="<td colspan=\"2\"><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>"+Nombre_Tabla+"</b></FONT></td>\n";
         form+="</tr>\n";

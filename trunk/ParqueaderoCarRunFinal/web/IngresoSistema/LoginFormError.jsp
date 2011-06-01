@@ -10,10 +10,11 @@
 
 <% HtmlPagina h = new HtmlPagina();
    HtmlForm f = new HtmlForm();
-    f.HtmlFomLogin("Login", "/ParqueaderoCarRunFinal/IngresoSistema/doLogin.jsp", "Ingreso al Sistema Car Run","300");
+    f.HtmlFormLogin("Login", "/ParqueaderoCarRunFinal/IngresoSistema/doLogin.jsp", "Ingreso al Sistema Car Run","300");
     f.addTextField("Usuario :", "usuario", "20",null);
     f.addPaswdField("Password:", "passwd", "20","");
     f.errorLogin();
+    h.setPath(1);
     h.setFreeHtml(f.getForm());
 
 %>
