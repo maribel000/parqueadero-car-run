@@ -13,6 +13,7 @@ public class HtmlPagina {
     private boolean BotonContratosCaj;
     private boolean BotonDanosParq;
     private boolean BotonDatosPersonales;
+    private boolean BotonInformeTes;
     private int tipodesesion;
     private FreeHtml freehtml;
 
@@ -42,6 +43,9 @@ public class HtmlPagina {
 
     public void setBotonDanhosParq(boolean b){
         BotonDanosParq = b;
+    }
+    public void setBotonInformeTes(boolean b){
+        BotonInformeTes = b;
     }
 
     public void setFreeHtml(String sc){
@@ -168,6 +172,7 @@ sc +="}\n";
     if(BotonUsuariosCoo) sc+=this.getBotonesGestionarUsuarios();
     if(BotonContratosCaj) sc+=this.getBotonesGeneralGestion();
     if(BotonDanosParq) sc+=this.getBotonesGeneralGestion();
+    if(BotonInformeTes) sc+=this.getBotonesGeneralGestion();
     if(BotonDatosPersonales) sc+=this.getBotonesDatosPersonales();
     
     if(this.freehtml!=null)
@@ -176,7 +181,7 @@ sc +="}\n";
     sc +="	<br class=\"clearfloat\" />\n";
         // PIE DE PAGINA
     sc +="   <div id=\"footer\">\n";
-    sc +="     <FONT FACE=\"Verdana\" SIZE=2.5 FONT COLOR=#CDC9C9>Elaborado por UNDevelopment, o sea por m&iacute.\n";
+    sc +="     <FONT FACE=\"Verdana\" SIZE=2.5 FONT COLOR=#CDC9C9>Elaborado por UNDevelopment\n";
     sc +="    </div\n";
     sc +="</div>\n";
     sc +="</body>\n";
@@ -187,22 +192,28 @@ sc +="}\n";
     public String getBotonLogin(){
         String sc="";
         if(!session){
-        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/index.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Ingresar</b></FONT></a>";
+        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/index.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/1.png\" align=\"left\"><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Ingresar</b></FONT></a>";
+
         return sc;
         }else{
         /*Coordinador (a)*/
         if(this.tipodesesion==1){
-        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
+        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/3.png\" align=\"left\"><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><IMG SRC=\"/ParqueaderoCarRunFinal2/images/2.png\" align=\"left\"><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
         return sc;
         }
         /*Cajero (a)*/
         else if(this.tipodesesion==2){
-        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
+        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/3.png\" align=\"left\"><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><IMG SRC=\"/ParqueaderoCarRunFinal2/images/2.png\" align=\"left\"><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
         return sc;
         }
         /*Parqueador (a)*/
         else if(this.tipodesesion==3){
-        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
+        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/3.png\" align=\"left\"><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><IMG SRC=\"/ParqueaderoCarRunFinal2/images/2.png\" align=\"left\"><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
+        return sc;
+        }
+        /*Tesorero (a)*/
+        else if(this.tipodesesion==4){
+        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/3.png\" align=\"left\"><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Inicio</b></FONT></a><pre></pre><IMG SRC=\"/ParqueaderoCarRunFinal2/images/2.png\" align=\"left\"><a href='/ParqueaderoCarRunFinal2/exit.jsp'><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Salir</b></FONT></a>";
         return sc;
         }
         else{
@@ -260,8 +271,16 @@ sc +="}\n";
         sc+="<a href='/ParqueaderoCarRunFinal2/Parqueador/PersonalInfo/index.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Mdatos.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Mi Perfil\"> </a>\n\n";
         sc+="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/contacto.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Contacto.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Contactenos\"> </a>\n";
         return sc;
-
         }
+        /*Tesorero (a)*/
+        else if(this.tipodesesion==4){
+        sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/inicio.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Inicio\"> </a>\n\n";
+        sc+="<a href='/ParqueaderoCarRunFinal2/Tesorero/InformeEc/index.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Informes.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Reporte\"> </a>\n\n";
+        sc+="<a href='/ParqueaderoCarRunFinal2/Tesorero/PersonalInfo/index.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Mdatos.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Mi Perfil\"> </a>\n\n";
+        sc+="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/contacto.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Contacto.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Contactenos\"> </a>\n";
+        return sc;
+        }
+
         else{
             sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/inicio.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/inicio.png\" WIDTH=110 HEIGHT=50 Border=0 VSPACE=3 HSPACE=3 ALT=\"Inicio\"> </a>\n";
             return sc;
@@ -292,6 +311,12 @@ sc +="}\n";
         sc+="<a href='/ParqueaderoCarRunFinal2/Parqueador/GestionarDanhos/ActualizarRep.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/ActualizarR.png\" WIDTH=110 HEIGHT=50 Border=0  ALT=\"Actualizar\"></a>";
         return sc;
         }
+        /*Tesorero*/
+        else if(this.tipodesesion==4){
+        sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Reporte Econ&oacute;mico</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Tesorero/InformeEc/index.jsp'></a>";
+        return sc;
+        }
+
          else return sc;
         }
 
@@ -308,12 +333,16 @@ sc +="}\n";
         sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Datos Personales</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Cajero/PersonalInfo/index.jsp'></a>";
         return sc;
         }
-        /*parqueador*/
+        /*Parqueador*/
         else if(this.tipodesesion==3){
         sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Datos Personales</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Parqueador/PersonalInfo/index.jsp'></a>";
         return sc;
         }
-
+        /*Tesorero*/
+        else if(this.tipodesesion==4){
+        sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Datos Personales</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Tesorero/PersonalInfo/index.jsp'></a>";
+        return sc;
+        }
         else return sc;
         }
 
