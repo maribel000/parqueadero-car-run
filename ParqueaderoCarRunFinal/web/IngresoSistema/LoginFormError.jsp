@@ -4,17 +4,15 @@
     Author     : eagle
 --%>
 
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <%@include file="checksession.jsp"%>
 <%@page import="viewsHtml.*"%>
 
 <% HtmlPagina h = new HtmlPagina();
    HtmlForm f = new HtmlForm();
-    f.HtmlFormLogin("Login", "/ParqueaderoCarRunFinal/IngresoSistema/doLogin.jsp", "Ingreso al Sistema Car Run","300");
+    f.HtmlBasicForm("Login", "/ParqueaderoCarRunFinal/IngresoSistema/doLogin.jsp", "Ingreso al Sistema Car Run","300");
     f.addTextField("Usuario :", "usuario", "20",null);
     f.addPaswdField("Password:", "passwd", "20","");
     f.errorLogin();
-    h.setPath(1);
     h.setFreeHtml(f.getForm());
 
 %>
