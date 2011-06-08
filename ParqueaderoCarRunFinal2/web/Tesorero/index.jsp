@@ -4,14 +4,15 @@
     Author     : eagle
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@include file="checksession.jsp"%>
+<%@page import="viewsHtml.*"%>
+
+<% HtmlPagina page1 = new HtmlPagina();
+   page1.session=true;
+   page1.setTipodeSesion(Tipo_Usuario);
+   HtmlBienvenida welc1= new HtmlBienvenida();
+   welc1.setBienvenida("Maria","Perez","Tesorero"); //falta leer el nombre
+   page1.setFreeHtml(welc1.getBienvenida() );
+%>
+
+<%=page1.getSource()%>
