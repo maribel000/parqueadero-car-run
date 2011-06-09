@@ -5,16 +5,28 @@
 --%>
 
 
+<%@page import="java.util.ArrayList"%>
 <%@include file="checksession.jsp"%>
 <%@page import="viewsHtml.*"%>
+<%@page import="Controller.viewClienteMgr"%>
 
 <% HtmlPagina page1 = new HtmlPagina();
-    HtmlForm f = new HtmlForm();
+    HtmlForm form1 = new HtmlForm();
     page1.session=true;
     page1.setTipodeSesion(Tipo_Usuario);
     page1.setBotonContratosCaj(true);
-    //f.HtmlBasicForm("Contratos", "", "Contratos Cajero (a)","400"); Implementar
-    f.TituloContrato();
+   
+ ArrayList <VIEWCLIENTE> cli= viewClienteMgr.mgr.getListClientes();
+
+    page1.setFreeHtml(form1.getFormSinBoton());
+      form1.HtmlSourceForm("Clientes", "", "Contratos Clientes","700");
+      form1.TituloPersona();
+
+      for (VIEWCLIENTE it : cli) {
+          form1.addLabelField(it.NUMEROCOTRATO, it.NOMBRECLIENTE, it.APELLIDOCLIENTE, it.CEDULACLIENTE);
+ }
+
+   page1.setFreeHtml(form1.getFormSinBoton());
 
 %>
 
