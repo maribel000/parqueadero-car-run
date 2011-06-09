@@ -311,7 +311,7 @@ sc +="}\n";
         }
         /*Parqueador (a)*/
         else if(this.tipodesesion==3){
-        sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Gestionar Da&ntilde;os</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Parqueador/GestionarDanhos/index.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Report.png\" WIDTH=110 HEIGHT=50 Border=0  ALT=\"Crear\"></a>";
+        sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Gestionar Da&ntilde;os</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Parqueador/GestionarDanhos/CrearReporte.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Report.png\" WIDTH=110 HEIGHT=50 Border=0  ALT=\"Crear\"></a>";
         sc+="<a href='/ParqueaderoCarRunFinal2/Parqueador/GestionarDanhos/ActualizarRep.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/ActualizarR.png\" WIDTH=110 HEIGHT=50 Border=0  ALT=\"Actualizar\"></a>";
         return sc;
         }
