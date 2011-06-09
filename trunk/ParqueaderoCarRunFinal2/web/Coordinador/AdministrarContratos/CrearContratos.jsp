@@ -15,7 +15,6 @@
 
 <%
 
-
     HtmlPagina page1 = new HtmlPagina();
     HtmlForm form1 = new HtmlForm();
     page1.session=true;
@@ -26,10 +25,10 @@
  VIEWCONTRATO cont= new VIEWCONTRATO();
 
  form1.HtmlSourceForm("Crear Cliente", "/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/CrearContratos.jsp", "Crear Nuevo cliente","500");
- form1.addTextSourceField("Cedula :", "CEDULACLIENTE", "20",null);
- form1.addTextSourceField("Nombres :", "NOMBRECLIENTE", "20",null);
- form1.addTextSourceField("Apellidos :", "APELLIDOCLIENTE", "20",null);
- form1.addTextSourceField("Telefono:", "TELEFONOCLIENTE", "20",null);
+ form1.addTextSourceField("Cedula :", "CEDULACLIENTE", "40",null);
+ form1.addTextSourceField("Nombres :", "NOMBRECLIENTE", "40",null);
+ form1.addTextSourceField("Apellidos :", "APELLIDOCLIENTE", "40",null);
+ form1.addTextSourceField("Telefono:", "TELEFONOCLIENTE", "40",null);
 
  page1.setFreeHtml(form1.getFormSource());
  
