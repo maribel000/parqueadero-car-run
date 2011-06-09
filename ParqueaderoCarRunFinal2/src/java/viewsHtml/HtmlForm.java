@@ -7,12 +7,24 @@ package viewsHtml;
 public class HtmlForm {
     
  private String form = "";   
-    
 
+
+
+  
     public String getForm(){
         form+="<tr>\n";
         form+="<label>";
         form+="<td colspan=\"2\"><div align=\"right\"><input type=\"submit\" name=\"idx\" id=\"idx\" value=\"Ingresar\" />";
+        form+="</label></div></td>\n</tr></table>\n</form></center>\n";
+        return form;
+    }
+
+
+ 
+     public String getFormSource(){
+        form+="<tr>\n";
+        form+="<label>";
+        form+="<td colspan=\"2\"><div align=\"right\"><input type=\"submit\" name=\"idx\" id=\"idx\" value=\"Crear\" />";
         form+="</label></div></td>\n</tr></table>\n</form></center>\n";
         return form;
     }
@@ -53,7 +65,19 @@ public class HtmlForm {
         form+="</tr>";
     }
 
-    public void addPaswdField(String Nombre, String Nombre_Text,String Max,String Value){
+
+    public void addTextSourceField(String Nombre, String Nombre_Text,String Max, String Value){
+        if(Value==null)
+            Value="";
+        form+="<br><tr>";
+        form+="<td><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=#87CEFA>"+Nombre+"</FONT></b></td>";
+        form+="<td><label><input name="+Nombre_Text+" type=\"text\" id="+Nombre_Text+" size="+Max+" maxlength="+Max+" value='"+Value+"' /></label></td>";
+        form+="</tr>";
+    }
+
+
+
+        public void addPaswdField(String Nombre, String Nombre_Text,String Max,String Value){
         form+="<tr>";
         form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>"+Nombre+"</FONT></td>";
         form+="<td><label><input name="+Nombre_Text+" type=\"password\" id="+Nombre_Text+" size="+Max+" maxlength="+Max+" value='"+Value+"' /></label></td>";
@@ -68,7 +92,8 @@ public class HtmlForm {
         form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>"+d+"</FONT></td>";
         form+="</tr>";
     }
-    public void TituloContrato(){
+
+     public void TituloContrato(){
         form+="<tr>";
         form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>Numero Contrato</FONT></b></center></td>";
         form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>Tipo</FONT></center></b></td>";
@@ -117,10 +142,6 @@ public class HtmlForm {
     }
     
 
-
-
-     
-  
 
     public void addOptionField(String Nombre){
         form+="<tr>";
