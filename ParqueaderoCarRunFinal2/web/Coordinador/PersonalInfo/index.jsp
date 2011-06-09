@@ -25,10 +25,7 @@ HtmlPagina page0 = new HtmlPagina();
            form1.addLabelField(it.NOMBREUSUARIO, it.APELLIDOUSUARIO, it.E_MAIL, it.TELEFONOUSUARIO);
        }
 
-
-    
-    
-     page0.setFreeHtml(form1.getFormSinBoton());
+    page0.setFreeHtml(form1.getFormSinBoton());
 
 %>
 
