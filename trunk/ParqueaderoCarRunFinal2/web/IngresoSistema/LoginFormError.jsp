@@ -3,7 +3,7 @@
     Created on : May 17, 2011, 6:33:58 PM
     Author     : eagle
 --%>
-
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <%@include file="checksession.jsp"%>
 <%@page import="viewsHtml.*"%>
 
