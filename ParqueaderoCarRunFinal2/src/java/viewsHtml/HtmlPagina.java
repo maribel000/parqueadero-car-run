@@ -329,7 +329,7 @@ sc +="}\n";
         String sc="";
         /*Coordinador*/ if(this.tipodesesion==1){
          sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Datos Personales</FONT><br><br><a href='/ParqueaderoCarRunFinal2/Cordinador/PersonalInfo/index.jsp'></a>";
-         sc+="<a href='/ParqueaderoCarRun/Coordinador/ActualizarDatos.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Actualizar.png\" WIDTH=110 HEIGHT=50 Border=0 ALT=\"Actualizar Datos\"></a></center><br><br>\n";
+         sc+="<a href='/ParqueaderoCarRunFinal2/Coordinador/PersonalInfo/ActualizarDatos.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Actualizar.png\" WIDTH=110 HEIGHT=50 Border=0 ALT=\"Actualizar Datos\"></a></center><br><br>\n";
          return sc;
         }
         /*Cajero (a)*/

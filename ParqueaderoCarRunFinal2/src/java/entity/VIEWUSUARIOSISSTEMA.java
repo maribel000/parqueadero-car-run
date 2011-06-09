@@ -32,7 +32,8 @@ public class VIEWUSUARIOSISSTEMA extends BasicBean {
         public String getUpdateSql() {
                 String sql = "";
                 if( id.equals( "" ) ){
-                        sql = "insert into VIEWUSUARIOSISSTEMA( IDROLPARQUEO, IDROLADMIN, NOMBREUSUARIO, APELLIDOUSUARIO, E_MAIL, TELEFONOUSUARIO ) values( '" +
+                        sql = "insert into VIEWUSUARIOSISSTEMA(CEDULAUSUARIO, IDROLPARQUEO, IDROLADMIN, NOMBREUSUARIO, APELLIDOUSUARIO, E_MAIL, TELEFONOUSUARIO ) values( '" +
+                        CEDULAUSUARIO + "', '" +
                         IDROLPARQUEO + "', '" +
                         IDROLADMIN + "', '" +
                         NOMBREUSUARIO + "', '" +
