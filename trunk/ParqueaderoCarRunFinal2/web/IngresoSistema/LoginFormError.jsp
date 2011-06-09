@@ -11,7 +11,7 @@
    HtmlForm f = new HtmlForm();
   // h.session=true;
     f.HtmlBasicForm("Login", "/ParqueaderoCarRunFinal2/IngresoSistema/doLogin.jsp", "Ingreso al Sistema Car Run","300");
-    f.addTextField("Usuario :", "usuario", "20",null);
+    f.addTextField("Usuario :", "uname", "20",null);
     f.addPaswdField("Password:", "passwd", "20","");
     f.errorLogin();
     h.setFreeHtml(f.getForm());

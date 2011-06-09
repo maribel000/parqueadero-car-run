@@ -30,7 +30,8 @@ public class VIEWCLIENTE extends BasicBean {
         public String getUpdateSql() {
                 String sql = "";
                 if( id.equals( "" ) ){
-                        sql = "insert into VIEWCLIENTE( NUMEROCOTRATO, NOMBRECLIENTE, APELLIDOCLIENTE, TELEFONOCLIENTE ) values( '" +
+                        sql = "insert into VIEWCLIENTE(CEDULACLIENTE, NUMEROCOTRATO, NOMBRECLIENTE, APELLIDOCLIENTE, TELEFONOCLIENTE ) values( '" +
+                        CEDULACLIENTE + "', '" +
                         NUMEROCOTRATO + "', '" +
                         NOMBRECLIENTE + "', '" +
                         APELLIDOCLIENTE + "', '" +
