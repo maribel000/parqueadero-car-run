@@ -7,6 +7,7 @@ import entity.BasicBean;
 import conection.DBPool;
 import java.util.GregorianCalendar;
 
+
 public class DbManager {
 
     private String m_szTable = "";
@@ -23,7 +24,7 @@ public class DbManager {
     public synchronized ArrayList getList(String name, String id) {
         return executeQuery("select * from " + m_szTable + " where " + name + "='" + id + "' order by nombre");
     }
-
+   
     public synchronized ArrayList getList(String name, String id, String orderBy) {
         return executeQuery("select * from " + m_szTable + " where " + name + "='" + id + "' order by " + orderBy);
     }
@@ -40,7 +41,7 @@ public class DbManager {
                 addObject(v, rs);
             }
         } catch (Exception e) {
-            System.out.println("-------------------ERROR---------------------");
+            System.out.println("-----------------ERROR---------------------");
             System.out.println("SQL: " + sz);
             System.out.println("Exception: " + e);
         }
@@ -54,8 +55,8 @@ public class DbManager {
         Connection con = DBPool.getConnection(m_nConnection);
         try {
             Statement stm = con.createStatement();
-            stm.execute("SET CHARACTER SET utf8");
-            stm.execute("SET NAMES utf8");
+           // stm.execute("SET CHARACTER SET utf8");
+           // stm.execute("SET NAMES utf8");
             ResultSet rs = stm.executeQuery(sql);
 
             while (rs.next()) {
@@ -83,11 +84,11 @@ public class DbManager {
         Connection con = DBPool.getConnection(m_nConnection);
         try {
             Statement stm = con.createStatement();
-            stm.execute("SET CHARACTER SET utf8");
-            stm.execute("SET NAMES utf8");
+           // stm.execute("SET CHARACTER SET utf8");
+            //stm.execute("SET NAMES utf8");
             stm.execute(sz);
         } catch (Exception e) {
-            System.out.println("-------------------ERROR---------------------");
+            System.out.println("-----------------ERROR---------------------");
             System.out.println("SQL: " + sz);
             System.out.println("Exception: " + e);
         }
@@ -98,14 +99,14 @@ public class DbManager {
         Connection con = DBPool.getConnection(m_nConnection);
         try {
             Statement stm = con.createStatement();
-            stm.execute("SET CHARACTER SET utf8");
-            stm.execute("SET NAMES utf8");
+           // stm.execute("SET CHARACTER SET utf8");
+            //stm.execute("SET NAMES utf8");
             stm.execute(szTry);
         } catch (Exception e) {
             try {
                 Statement stm = con.createStatement();
-                stm.execute("SET CHARACTER SET utf8");
-                stm.execute("SET NAMES utf8");
+                //stm.execute("SET CHARACTER SET utf8");
+                //stm.execute("SET NAMES utf8");
                 stm.execute(szCatch);
             } catch (Exception ez) {
                 System.out.println("-------------------ERROR---------------------");
@@ -168,6 +169,17 @@ public class DbManager {
         }
         return getBean();
     }
+
+
+    public synchronized BasicBean getList() {
+        ArrayList lst = executeQuery("select TOP(50) * from " + m_szTable);
+        if (lst.size() > 0) {
+            return (BasicBean) lst.get(0);
+        }
+        return getBean();
+    }
+
+
 
     public String validNull(String sz) {
         if (sz != null) {

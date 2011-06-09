@@ -33,7 +33,10 @@ public class viewClienteMgr extends DbManager {
 		return (VIEWCLIENTE)super.getItem(id);
 	}
 
-
+        public synchronized ArrayList<VIEWCLIENTE> getListClientes(){
+        ArrayList<VIEWCLIENTE> lst = executeQuery("select TOP(50) * from VIEWCLIENTE");
+        return lst;
+       }
         public synchronized void eliminar (String cedula){
             execute("delete from VIEWCLIENTE where cedulaCliente = '"+cedula+"'");
         }

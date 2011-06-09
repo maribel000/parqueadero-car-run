@@ -50,4 +50,14 @@ public class VIEWUSUARIOSISSTEMA extends BasicBean {
                 }
            return sql;
         }
+
+     @Override
+     public String getIdentifier() {
+        return "idUsuario=" + id;
+    }
+
+
+
+
+
    }
