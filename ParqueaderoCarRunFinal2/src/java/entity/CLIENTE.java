@@ -41,4 +41,19 @@ public class CLIENTE extends BasicBean {
                 }
            return sql;
         }
+
+    @Override
+	public String getHtmlRow() {
+		String sz = "";
+		sz += "<td class='st4middle'>" + NOMBRECLIENTE                 + "</td>";
+		sz += "<td class='st4middle'>" + APELLIDOCLIENTE              + "</td>";
+		sz += "<td class='st4middle'>" + NUMEROCOTRATO          + "</td>";
+		sz += "<td class='st4middle'>" + CEDULACLIENTE            + "</td>";
+		return sz;
+	}
+
+
+
+
+
    }

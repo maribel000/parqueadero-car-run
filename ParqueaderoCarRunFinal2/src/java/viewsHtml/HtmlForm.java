@@ -2,8 +2,7 @@
 package viewsHtml;
 
 /**
- *
- * @author eagle
+ *  * @author eagle
  */
 public class HtmlForm {
     
@@ -37,6 +36,14 @@ public class HtmlForm {
         form+="</tr>\n";
     }
 
+    public void HtmlSourceForm(String Nombre_Formulario, String Direccion, String Nombre_Tabla, String tam ){
+        form="<center><form action="+Direccion+" method=\"post\" onSubmit="+"name="+Nombre_Formulario+" target=\"_self\">\n";
+        form+="<table width=\""+tam+"\" height=\"30\" border=\"1\" cellspacing=\"1\" bordercolor=\"#87CEFA\" bgcolor=\"#FFFFFF\">\n";
+        form+="<tr>\n";
+        form+="<td colspan=\"4\"><b><FONT FACE=\"Verdana\" SIZE=1 COLOR=#87CEFA>"+Nombre_Tabla+"</b></FONT></td>\n";
+        form+="</tr>\n";
+    }
+
     public void addTextField(String Nombre, String Nombre_Text,String Max, String Value){
         if(Value==null)
             Value="";
@@ -53,14 +60,54 @@ public class HtmlForm {
         form+="</tr>";
     }
 
-    public void addLabelField(String Nombre, String Value){
+    public void addLabelField(String a, String b, String c, String d){
         form+="<tr>";
-        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>"+Nombre+"</FONT></td>";
-        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>"+Value+"</FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>"+a+"</FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>"+b+"</FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>"+c+"</FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>"+d+"</FONT></td>";
         form+="</tr>";
     }
-    
-    
+    public void TituloContrato(){
+        form+="<tr>";
+        form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>Numero Contrato</FONT></b></center></td>";
+        form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>Tipo</FONT></center></b></td>";
+        form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>Fecha Inicio</FONT></center></b></td>";
+        form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=black>Fecha Fin</FONT></center></b></td>";
+        form+="</tr>";
+    }
+
+        public void TituloPersona(){
+        form+="<tr>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Numero Contrato</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Nombres</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Apellidos</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Cedula</b></FONT></td>";
+        form+="</tr>";
+    }
+
+       public void TituloTrabajador(){
+      
+        form+="<tr>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Cedula</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Nombres</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Apellidos</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Rol Parqueadero</b></FONT></td>";
+        form+="</tr>";
+    }
+
+
+      public void TituloDatosP(){
+
+        form+="<tr>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Nombres</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Apellidos</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>E-mail</b></FONT></td>";
+        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=black><b>Telefono</b></FONT></td>";
+        form+="</tr>";
+    }
+
+
     public void addLabelFieldPersona(String Documento,String Nombre, String Apellido,String Rol){
         form+="<tr>";
         form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>"+Documento+"</FONT></td>";
@@ -69,22 +116,10 @@ public class HtmlForm {
         form+="</tr>";
     }
     
-    public void TituloPersona(){
-        form+="<tr>";
-        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white><b>DOCUMENTO</b></FONT></td>";
-        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white><b>NOMBRES</b></FONT></td>";
-        form+="<td><FONT FACE=\"Verdana\" SIZE=3 COLOR=white><b>ROL</b></FONT></td>";
-        form+="</tr>";
-    }
 
 
-     public void TituloContrato(){
-        form+="<tr>";
-        form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>Nombre</FONT></b></center></td>";
-        form+="<td><center><b><FONT FACE=\"Verdana\" SIZE=3 COLOR=white>NIT</FONT></center></b></td>";
-        form+="</tr>";
-    }
 
+     
   
 
     public void addOptionField(String Nombre){

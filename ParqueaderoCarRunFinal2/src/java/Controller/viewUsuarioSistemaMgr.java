@@ -32,7 +32,18 @@ public class viewUsuarioSistemaMgr extends DbManager {
 		return (VIEWUSUARIOSISSTEMA)super.getItem(id);
 	}
 
+        public synchronized ArrayList<VIEWUSUARIOSISSTEMA> getListDaP(String rol){
+        ArrayList<VIEWUSUARIOSISSTEMA> lst = executeQuery("select * from VIEWUSUARIOSISSTEMA" + " where IDROLPARQUEO='" + rol + "' ");
+        return lst;
+       }
 
+
+
+
+        public synchronized ArrayList<VIEWUSUARIOSISSTEMA> getListUsuarios(){
+        ArrayList<VIEWUSUARIOSISSTEMA> lst = executeQuery("select TOP(50) * from VIEWUSUARIOSISSTEMA");
+        return lst;
+       }
         public synchronized void eliminar (String cedula){
             execute("delete from VIEWUSUARIOSISSTEMA where cedulaUsuario = '"+cedula+"'");
         }

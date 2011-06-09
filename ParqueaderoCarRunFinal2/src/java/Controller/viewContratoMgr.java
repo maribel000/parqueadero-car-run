@@ -33,6 +33,10 @@ public class viewContratoMgr extends DbManager {
 		return (VIEWCONTRATO)super.getItem(id);
 	}
 
+        public synchronized ArrayList<VIEWCONTRATO> getListContratos(){
+        ArrayList<VIEWCONTRATO> lst = executeQuery("select TOP(50) * from VIEWCONTRATO");
+        return lst;
+       }
 
         public synchronized void eliminar (String numeroContrato){
             execute("delete from VIEWCONTRATO where numeroCotrato = '"+numeroContrato+"'");

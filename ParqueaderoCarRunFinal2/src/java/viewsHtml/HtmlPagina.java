@@ -1,12 +1,15 @@
 
 package viewsHtml;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author eagle
  */
 
 public class HtmlPagina {
+  
     public  boolean session;
     private boolean BotonContratosCoo;
     private boolean BotonUsuariosCoo;
@@ -189,7 +192,8 @@ sc +="}\n";
     return sc;
     }
 
-    public String getBotonLogin(){
+
+      public String getBotonLogin(){
         String sc="";
         if(!session){
         sc="<a href='/ParqueaderoCarRunFinal2/IngresoSistema/index.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/1.png\" align=\"left\"><b><FONT FACE=\"Verdana\" SIZE=2.5 COLOR=#87CEFA>Ingresar</b></FONT></a>";
@@ -291,7 +295,7 @@ sc +="}\n";
         String sc="";
         /*Coordinador*/
         if(this.tipodesesion==1){
-        sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Gestionar Contratos</FONT><br><br> <a href='/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/CrearContartos.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Crear.png\" WIDTH=110 HEIGHT=50 Border=0   ALT=\"Crear\"></a>";
+        sc="<center><FONT FACE=\"Verdana\" SIZE=5 Color=#87cefa>Gestionar Contratos</FONT><br><br> <a href='/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/CrearContratos.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Crear.png\" WIDTH=110 HEIGHT=50 Border=0   ALT=\"Crear\"></a>";
         sc+="<a href='/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/BorrarContrato.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Borrar.png\" WIDTH=110 HEIGHT=50 Border=0   ALT=\"Borrar\"></a>";
         sc+="<a href='/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/ActualizarContrato.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Actualizar.png\" WIDTH=110 HEIGHT=50 Border=0  ALT=\"Actualizar\"></a>";
         sc+="<a href='/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/BuscarContrato.jsp'><IMG SRC=\"/ParqueaderoCarRunFinal2/images/Buscar.png\" WIDTH=110 HEIGHT=50 Border=0  ALT=\"buscar\"></a></center><br><br>\n";

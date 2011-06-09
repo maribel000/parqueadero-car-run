@@ -43,4 +43,12 @@ public class CONTRATO extends BasicBean {
                 }
            return sql;
         }
+
+    @Override
+     public String getIdentifier() {
+        return "idContrato=" + id;
+    }
+
+
+
    }
