@@ -22,7 +22,7 @@
 
 
  VIEWCLIENTE client = new VIEWCLIENTE();
- VIEWCONTRATO cont= new VIEWCONTRATO();
+ //VIEWCONTRATO cont= new VIEWCONTRATO();
 
  form1.HtmlSourceForm("Crear Cliente", "/ParqueaderoCarRunFinal2/Coordinador/AdministrarContratos/CrearContratos.jsp", "Crear Nuevo cliente","500");
  form1.addTextSourceField("Cedula :", "CEDULACLIENTE", "40",null);
@@ -34,10 +34,11 @@
  
 
 client.CEDULACLIENTE = request.getParameter("CEDULACLIENTE") == null ? "" : request.getParameter("CEDULACLIENTE");
+client.NUMEROCOTRATO="1";
 client.NOMBRECLIENTE = request.getParameter("NOMBRECLIENTE") == null ? "" : request.getParameter("NOMBRECLIENTE");
 client.APELLIDOCLIENTE = request.getParameter("APELLIDOCLIENTE") == null ? "" : request.getParameter("APELLIDOCLIENTE");
 client.TELEFONOCLIENTE = request.getParameter("TELEFONOCLIENTE") == null ? "" : request.getParameter("TELEFONOCLIENTE");
-client.NUMEROCOTRATO="1";
+
 viewClienteMgr.mgr.execute(client.getUpdateSql());
 
 
